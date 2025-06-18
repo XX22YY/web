@@ -1,0 +1,1344 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>王小鱼 - 个人简历</title>
+  <!-- 引入Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- 引入Font Awesome -->
+  <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <!-- 引入Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.8/dist/chart.umd.min.js"></script>
+  <!-- Tailwind配置 -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#165DFF',
+            secondary: '#0D2B94',
+            accent: '#36BFFA',
+            dark: '#1E293B',
+            light: '#F8FAFC'
+          },
+          fontFamily: {
+            inter: ['Inter', 'system-ui', 'sans-serif'],
+            roboto: ['Roboto', 'system-ui', 'sans-serif']
+          },
+        },
+      }
+    }
+  </script>
+  <!-- 自定义工具类 -->
+  <style type="text/tailwindcss">
+    @layer utilities {
+      .content-auto {
+        content-visibility: auto;
+      }
+      .text-shadow {
+        text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      }
+      .text-gradient {
+        background-clip: text;
+        -webkit-background-clip: text;
+        color: transparent;
+      }
+      .bg-glass {
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+      }
+    }
+  </style>
+  <style>
+    /* 全局样式 */
+    html {
+      scroll-behavior: smooth;
+    }
+    
+    body {
+      font-family: 'Roboto', system-ui, sans-serif;
+      background-color: #F8FAFC;
+    }
+    
+    /* 动画效果 */
+    .fade-in {
+      animation: fadeIn 0.8s ease-in-out;
+    }
+    
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    .skill-bar {
+      transition: width 1.5s ease-in-out;
+    }
+    
+    /* 滚动条样式 */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    
+    ::-webkit-scrollbar-track {
+      background: #f1f1f1;
+    }
+    
+    ::-webkit-scrollbar-thumb {
+      background: #165DFF;
+      border-radius: 4px;
+    }
+    
+    ::-webkit-scrollbar-thumb:hover {
+      background: #0D2B94;
+    }
+  </style>
+</head>
+<body class="font-roboto text-dark">
+  <!-- 导航栏 -->
+  <header id="navbar" class="fixed w-full top-0 z-50 transition-all duration-300">
+    <nav class="bg-glass bg-white/80 shadow-sm">
+      <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+        <a href="#hero" class="text-primary font-bold text-xl md:text-2xl flex items-center">
+          <span class="mr-2"><i class="fa fa-code"></i></span>
+          <span>王小鱼</span>
+        </a>
+        
+        <!-- 移动端菜单按钮 -->
+        <button id="menu-toggle" class="md:hidden text-dark focus:outline-none">
+          <i class="fa fa-bars text-xl"></i>
+        </button>
+        
+        <!-- 桌面端导航 -->
+        <ul class="hidden md:flex space-x-8">
+          <li><a href="#about" class="text-dark hover:text-primary transition-colors duration-300">关于我</a></li>
+          <li><a href="#experience" class="text-dark hover:text-primary transition-colors duration-300">专业经历</a></li>
+          <li><a href="#skills" class="text-dark hover:text-primary transition-colors duration-300">技能</a></li>
+          <li><a href="#projects" class="text-dark hover:text-primary transition-colors duration-300">项目展示</a></li>
+          <li><a href="#education" class="text-dark hover:text-primary transition-colors duration-300">教育背景</a></li>
+          <li><a href="#contact" class="text-dark hover:text-primary transition-colors duration-300">联系方式</a></li>
+        </ul>
+      </div>
+      
+      <!-- 移动端导航菜单 -->
+      <div id="mobile-menu" class="hidden md:hidden bg-white border-t">
+        <div class="container mx-auto px-4 py-2">
+          <ul class="space-y-3 py-3">
+            <li><a href="#about" class="block py-2 text-dark hover:text-primary transition-colors duration-300">关于我</a></li>
+            <li><a href="#experience" class="block py-2 text-dark hover:text-primary transition-colors duration-300">专业经历</a></li>
+            <li><a href="#skills" class="block py-2 text-dark hover:text-primary transition-colors duration-300">技能</a></li>
+            <li><a href="#projects" class="block py-2 text-dark hover:text-primary transition-colors duration-300">项目展示</a></li>
+            <li><a href="#education" class="block py-2 text-dark hover:text-primary transition-colors duration-300">教育背景</a></li>
+            <li><a href="#contact" class="block py-2 text-dark hover:text-primary transition-colors duration-300">联系方式</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <!-- 首屏展示 -->
+    <section id="hero" class="pt-28 pb-20 md:pt-36 md:pb-28 bg-gradient-to-br from-primary/5 to-light relative overflow-hidden">
+      <div class="absolute top-0 right-0 w-full h-full overflow-hidden opacity-10">
+        <div class="absolute -right-20 -top-20 w-80 h-80 rounded-full bg-primary"></div>
+        <div class="absolute right-1/4 top-1/3 w-60 h-60 rounded-full bg-accent"></div>
+        <div class="absolute left-1/4 bottom-1/4 w-72 h-72 rounded-full bg-secondary"></div>
+      </div>
+      
+      <div class="container mx-auto px-4 relative">
+        <div class="flex flex-col md:flex-row items-center">
+          <div class="md:w-1/2 mb-10 md:mb-0">
+            <h1 class="text-[clamp(2.5rem,5vw,4rem)] font-bold leading-tight mb-4">
+              <span class="text-gradient bg-gradient-to-r from-primary to-secondary">王小鱼</span>
+            </h1>
+            <h2 class="text-[clamp(1.5rem,3vw,2.5rem)] font-semibold mb-6 text-dark/80">
+              大模型应用开发专家 | 高级算法讲师
+            </h2>
+            <p class="text-lg md:text-xl mb-8 text-dark/70 max-w-xl">
+              专注于大模型应用开发与算法优化，5年+工业级AI系统设计经验，累计培养AI工程师500+人。
+            </p>
+            <div class="flex flex-wrap gap-4">
+              <a href="#contact" class="px-6 py-3 bg-primary text-white rounded-lg shadow-lg hover:bg-primary/90 transition-all duration-300 transform hover:-translate-y-1">
+                联系我
+              </a>
+              <a href="#projects" class="px-6 py-3 bg-white text-primary border border-primary rounded-lg shadow-md hover:bg-primary/5 transition-all duration-300 transform hover:-translate-y-1">
+                查看项目
+              </a>
+            </div>
+          </div>
+          <div class="md:w-1/2 flex justify-center">
+            <div class="relative w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden shadow-2xl border-4 border-white">
+              <img src="https://picsum.photos/seed/wangxiaoyu/400/400" alt="王小鱼个人照片" class="w-full h-full object-cover">
+              <div class="absolute inset-0 bg-gradient-to-tr from-primary/20 to-transparent"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- 波浪装饰 -->
+      <div class="absolute bottom-0 left-0 w-full">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 120" class="w-full h-auto">
+          <path fill="#ffffff" fill-opacity="1" d="M0,64L80,69.3C160,75,320,85,480,80C640,75,800,53,960,48C1120,43,1280,53,1360,58.7L1440,64L1440,120L1360,120C1280,120,1120,120,960,120C800,120,640,120,480,120C320,120,160,120,80,120L0,120Z"></path>
+        </svg>
+      </div>
+    </section>
+
+    <!-- 关于我 -->
+    <section id="about" class="py-20 bg-white">
+      <div class="container mx-auto px-4">
+        <div class="text-center mb-16">
+          <h2 class="text-[clamp(1.8rem,3vw,2.5rem)] font-bold mb-4 relative inline-block">
+            关于我
+            <span class="absolute -bottom-2 left-0 w-1/2 h-1 bg-primary rounded-full"></span>
+          </h2>
+          <p class="text-dark/70 max-w-2xl mx-auto">了解我的背景、专业领域和职业目标</p>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+          <div class="md:col-span-2">
+            <p class="text-lg mb-6 text-dark/80 leading-relaxed">
+              我是王小鱼，拥有8年AI算法和工程经验，专注于大模型应用开发与落地。目前担任北大青鸟大模型应用开发高级讲师，主导《工业级大模型部署实战》课程体系的研发与教学工作。
+            </p>
+            <p class="text-lg mb-6 text-dark/80 leading-relaxed">
+              此前，我在苏宁易购担任算法工程师，参与并主导了多个关键项目，包括商品推荐系统升级和智能客服系统开发。我的工作涉及从算法研究到工程实现的全流程，尤其擅长将前沿技术转化为实际业务价值。
+            </p>
+            <p class="text-lg mb-8 text-dark/80 leading-relaxed">
+              我热衷于技术传播与知识分享，拥有丰富的教学与培训经验，累计培养AI工程师500+人，帮助学员实现技术突破与职业发展。
+            </p>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-8">
+              <div class="bg-light p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow duration-300">
+                <div class="flex items-center mb-4">
+                  <div class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary mr-4">
+                    <i class="fa fa-briefcase text-xl"></i>
+                  </div>
+                  <h3 class="font-semibold text-lg">工作经验</h3>
+                </div>
+                <p class="text-dark/70">8年AI算法与工程经验，5年大模型应用开发</p>
+              </div>
+              
+              <div class="bg-light p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow duration-300">
+                <div class="flex items-center mb-4">
+                  <div class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary mr-4">
+                    <i class="fa fa-users text-xl"></i>
+                  </div>
+                  <h3 class="font-semibold text-lg">学员人数</h3>
+                </div>
+                <p class="text-dark/70">累计培养AI工程师500+人</p>
+              </div>
+              
+              <div class="bg-light p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow duration-300">
+                <div class="flex items-center mb-4">
+                  <div class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary mr-4">
+                    <i class="fa fa-graduation-cap text-xl"></i>
+                  </div>
+                  <h3 class="font-semibold text-lg">教育背景</h3>
+                </div>
+                <p class="text-dark/70">河南理工大学 数学学士</p>
+              </div>
+              
+              <div class="bg-light p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow duration-300">
+                <div class="flex items-center mb-4">
+                  <div class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary mr-4">
+                    <i class="fa fa-certificate text-xl"></i>
+                  </div>
+                  <h3 class="font-semibold text-lg">专业认证</h3>
+                </div>
+                <p class="text-dark/70">TensorFlow Developer, AWS SA</p>
+              </div>
+            </div>
+          </div>
+          
+          <div class="bg-light p-8 rounded-2xl shadow-md">
+            <h3 class="font-semibold text-xl mb-6 pb-2 border-b border-gray-200">基本信息</h3>
+            <ul class="space-y-4">
+              <li class="flex items-center">
+                <span class="w-1/3 text-dark/60">姓名:</span>
+                <span class="font-medium">王小鱼</span>
+              </li>
+              <li class="flex items-center">
+                <span class="w-1/3 text-dark/60">职位:</span>
+                <span class="font-medium">大模型应用开发专家</span>
+              </li>
+              <li class="flex items-center">
+                <span class="w-1/3 text-dark/60">电话:</span>
+                <span class="font-medium">(+86)123-4567-8910</span>
+              </li>
+              <li class="flex items-center">
+                <span class="w-1/3 text-dark/60">邮箱:</span>
+                <span class="font-medium">wangxiaoyu517@126.com</span>
+              </li>
+              <li class="flex items-center">
+                <span class="w-1/3 text-dark/60">博客:</span>
+                <span class="font-medium"><a href="https://wangxiaoyu-ai.github.io" class="text-primary hover:underline">wangxiaoyu-ai.github.io</a></span>
+              </li>
+              <li class="flex items-center">
+                <span class="w-1/3 text-dark/60">GitHub:</span>
+                <span class="font-medium"><a href="https://github.com/wangxiaoyu-ai" class="text-primary hover:underline">github.com/wangxiaoyu-ai</a></span>
+              </li>
+            </ul>
+            
+            <div class="mt-8">
+              <h3 class="font-semibold text-xl mb-4">专业技能</h3>
+              <div class="space-y-4">
+                <div>
+                  <div class="flex justify-between mb-1">
+                    <span class="text-sm font-medium">大模型开发</span>
+                    <span class="text-sm text-primary">95%</span>
+                  </div>
+                  <div class="w-full bg-gray-200 rounded-full h-2">
+                    <div class="bg-primary h-2 rounded-full skill-bar" style="width: 0%" data-width="95%"></div>
+                  </div>
+                </div>
+                <div>
+                  <div class="flex justify-between mb-1">
+                    <span class="text-sm font-medium">算法优化</span>
+                    <span class="text-sm text-primary">90%</span>
+                  </div>
+                  <div class="w-full bg-gray-200 rounded-full h-2">
+                    <div class="bg-primary h-2 rounded-full skill-bar" style="width: 0%" data-width="90%"></div>
+                  </div>
+                </div>
+                <div>
+                  <div class="flex justify-between mb-1">
+                    <span class="text-sm font-medium">系统设计</span>
+                    <span class="text-sm text-primary">88%</span>
+                  </div>
+                  <div class="w-full bg-gray-200 rounded-full h-2">
+                    <div class="bg-primary h-2 rounded-full skill-bar" style="width: 0%" data-width="88%"></div>
+                  </div>
+                </div>
+                <div>
+                  <div class="flex justify-between mb-1">
+                    <span class="text-sm font-medium">教学培训</span>
+                    <span class="text-sm text-primary">92%</span>
+                  </div>
+                  <div class="w-full bg-gray-200 rounded-full h-2">
+                    <div class="bg-primary h-2 rounded-full skill-bar" style="width: 0%" data-width="92%"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 专业经历 -->
+    <section id="experience" class="py-20 bg-light">
+      <div class="container mx-auto px-4">
+        <div class="text-center mb-16">
+          <h2 class="text-[clamp(1.8rem,3vw,2.5rem)] font-bold mb-4 relative inline-block">
+            专业经历
+            <span class="absolute -bottom-2 left-0 w-1/2 h-1 bg-primary rounded-full"></span>
+          </h2>
+          <p class="text-dark/70 max-w-2xl mx-auto">我的职业发展历程和主要成就</p>
+        </div>
+        
+        <div class="relative">
+          <!-- 时间线 -->
+          <div class="absolute left-0 md:left-1/2 top-0 bottom-0 w-0.5 bg-primary/30 transform md:translate-x-[-50%]"></div>
+          
+          <!-- 经历项 1 -->
+          <div class="mb-12 relative">
+            <div class="flex flex-col md:flex-row items-center">
+              <div class="md:w-1/2 md:pr-12 md:text-right mb-8 md:mb-0">
+                <div class="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300 transform hover:-translate-y-1">
+                  <span class="inline-block px-3 py-1 bg-primary/10 text-primary text-sm font-medium rounded-full mb-3">2021 - 至今</span>
+                  <h3 class="text-xl font-bold mb-2">北大青鸟</h3>
+                  <p class="text-lg font-medium mb-3">大模型应用开发高级讲师</p>
+                  <ul class="text-dark/70 space-y-2">
+                    <li>课程研发：主导开发《工业级大模型部署实战》课程体系，累计培养AI工程师500+人，学员平均就业薪资提升35%</li>
+                    <li>平台建设：设计企业级教学沙箱平台，支持200+并发模型训练，提升60%教学资源利用率</li>
+                    <li>产学合作：联合清华智谱团队构建产业级案例库，沉淀32个行业解决方案（金融/医疗/零售）</li>
+                  </ul>
+                </div>
+              </div>
+              <div class="absolute left-[-10px] md:left-1/2 w-6 h-6 bg-primary rounded-full transform md:translate-x-[-50%] shadow-lg"></div>
+            </div>
+          </div>
+          
+          <!-- 经历项 2 -->
+          <div class="mb-12 relative">
+            <div class="flex flex-col md:flex-row items-center">
+              <div class="md:w-1/2 md:pl-12 md:ml-auto">
+                <div class="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300 transform hover:-translate-y-1">
+                  <span class="inline-block px-3 py-1 bg-primary/10 text-primary text-sm font-medium rounded-full mb-3">2015 - 2021</span>
+                  <h3 class="text-xl font-bold mb-2">苏宁易购</h3>
+                  <p class="text-lg font-medium mb-3">算法工程师</p>
+                  <div class="mb-4">
+                    <h4 class="font-semibold text-primary mb-2">商品推荐系统升级 (2015-2018)</h4>
+                    <ul class="text-dark/70 space-y-2">
+                      <li>架构升级：实现Transformer在电商推荐的首次落地，通过多模态特征融合提升CTR 15.2%</li>
+                      <li>长尾优化：设计动态负采样算法，带动长尾商品年GMV增长2.3亿元</li>
+                      <li>工程优化：构建PyTorch+Triton推理框架，模型响应时间降低45%（120ms → 65ms）</li>
+                    </ul>
+                  </div>
+                  <div>
+                    <h4 class="font-semibold text-primary mb-2">智能客服系统开发 (2019-2021)</h4>
+                    <ul class="text-dark/70 space-y-2">
+                      <li>模型研发：开发知识增强型对话模型，问题解决率提升至82%，节省30%客服人力成本</li>
+                      <li>数据闭环：搭建主动学习系统，月均自动采集3000+高质量训练样本</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <div class="absolute left-[-10px] md:left-1/2 w-6 h-6 bg-primary rounded-full transform md:translate-x-[-50%] shadow-lg"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 技能 -->
+    <section id="skills" class="py-20 bg-white">
+      <div class="container mx-auto px-4">
+        <div class="text-center mb-16">
+          <h2 class="text-[clamp(1.8rem,3vw,2.5rem)] font-bold mb-4 relative inline-block">
+            技能
+            <span class="absolute -bottom-2 left-0 w-1/2 h-1 bg-primary rounded-full"></span>
+          </h2>
+          <p class="text-dark/70 max-w-2xl mx-auto">我的技术栈和专业能力</p>
+        </div>
+        
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-10">
+          <!-- 硬技能 -->
+          <div>
+            <h3 class="text-xl font-bold mb-6 pb-2 border-b border-gray-200">硬技能</h3>
+            
+            <div class="space-y-8">
+              <!-- 大模型 -->
+              <div>
+                <h4 class="text-lg font-semibold mb-4 flex items-center">
+                  <span class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary mr-3">
+                    <i class="fa fa-brain"></i>
+                  </span>
+                  大模型
+                </h4>
+                <div class="grid grid-cols-2 sm:grid-cols-3 gap-4">
+                  <div class="bg-light p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300 text-center">
+                    <div class="w-12 h-12 mx-auto mb-3 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+                      <i class="fa fa-code"></i>
+                    </div>
+                    <h5 class="font-medium">Transformer</h5>
+                  </div>
+                  <div class="bg-light p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300 text-center">
+                    <div class="w-12 h-12 mx-auto mb-3 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+                      <i class="fa fa-code"></i>
+                    </div>
+                    <h5 class="font-medium">GPT架构</h5>
+                  </div>
+                  <div class="bg-light p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300 text-center">
+                    <div class="w-12 h-12 mx-auto mb-3 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+                      <i class="fa fa-cogs"></i>
+                    </div>
+                    <h5 class="font-medium">LoRA微调</h5>
+                  </div>
+                  <div class="bg-light p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300 text-center">
+                    <div class="w-12 h-12 mx-auto mb-3 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+                      <i class="fa fa-cogs"></i>
+                    </div>
+                    <h5 class="font-medium">P-tuning</h5>
+                  </div>
+                  <div class="bg-light p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300 text-center">
+                    <div class="w-12 h-12 mx-auto mb-3 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+                      <i class="fa fa-compress"></i>
+                    </div>
+                    <h5 class="font-medium">模型压缩</h5>
+                  </div>
+                </div>
+              </div>
+              
+              <!-- 工程化 -->
+              <div>
+                <h4 class="text-lg font-semibold mb-4 flex items-center">
+                  <span class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary mr-3">
+                    <i class="fa fa-cubes"></i>
+                  </span>
+                  工程化
+                </h4>
+                <div class="grid grid-cols-2 sm:grid-cols-3 gap-4">
+                  <div class="bg-light p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300 text-center">
+                    <div class="w-12 h-12 mx-auto mb-3 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+                      <i class="fa fa-server"></i>
+                    </div>
+                    <h5 class="font-medium">TorchServe</h5>
+                  </div>
+                  <div class="bg-light p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300 text-center">
+                    <div class="w-12 h-12 mx-auto mb-3 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+                      <i class="fa fa-server"></i>
+                    </div>
+                    <h5 class="font-medium">Triton</h5>
+                  </div>
+                  <div class="bg-light p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300 text-center">
+                    <div class="w-12 h-12 mx-auto mb-3 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+                      <i class="fa fa-docker"></i>
+                    </div>
+                    <h5 class="font-medium">Docker</h5>
+                  </div>
+                  <div class="bg-light p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300 text-center">
+                    <div class="w-12 h-12 mx-auto mb-3 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+                      <i class="fa fa-kubernetes"></i>
+                    </div>
+                    <h5 class="font-medium">K8s</h5>
+                  </div>
+                  <div class="bg-light p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300 text-center">
+                    <div class="w-12 h-12 mx-auto mb-3 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+                      <i class="fa fa-cogs"></i>
+                    </div>
+                    <h5 class="font-medium">CI/CD</h5>
+                  </div>
+                </div>
+              </div>
+              
+              <!-- 全栈开发 -->
+              <div>
+                <h4 class="text-lg font-semibold mb-4 flex items-center">
+                  <span class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary mr-3">
+                    <i class="fa fa-code"></i>
+                  </span>
+                  全栈开发
+                </h4>
+                <div class="grid grid-cols-2 sm:grid-cols-3 gap-4">
+                  <div class="bg-light p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300 text-center">
+                    <div class="w-12 h-12 mx-auto mb-3 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+                      <i class="fa fa-code"></i>
+                    </div>
+                    <h5 class="font-medium">Python</h5>
+                  </div>
+                  <div class="bg-light p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300 text-center">
+                    <div class="w-12 h-12 mx-auto mb-3 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+                      <i class="fa fa-code"></i>
+                    </div>
+                    <h5 class="font-medium">Go</h5>
+                  </div>
+                  <div class="bg-light p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300 text-center">
+                    <div class="w-12 h-12 mx-auto mb-3 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+                      <i class="fa fa-cloud"></i>
+                    </div>
+                    <h5 class="font-medium">AWS</h5>
+                  </div>
+                  <div class="bg-light p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300 text-center">
+                    <div class="w-12 h-12 mx-auto mb-3 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+                      <i class="fa fa-cloud"></i>
+                    </div>
+                    <h5 class="font-medium">GCP</h5>
+                  </div>
+                  <div class="bg-light p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300 text-center">
+                    <div class="w-12 h-12 mx-auto mb-3 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+                      <i class="fa fa-sitemap"></i>
+                    </div>
+                    <h5 class="font-medium">分布式系统</h5>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- 软技能 -->
+          <div>
+            <h3 class="text-xl font-bold mb-6 pb-2 border-b border-gray-200">软技能</h3>
+            
+            <div class="space-y-8">
+              <!-- 技术转化 -->
+              <div>
+                <h4 class="text-lg font-semibold mb-4 flex items-center">
+                  <span class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary mr-3">
+                    <i class="fa fa-lightbulb-o"></i>
+                  </span>
+                  技术转化
+                </h4>
+                <div class="bg-light p-6 rounded-xl shadow-sm">
+                  <p class="text-dark/80 mb-4">3项顶会论文（ACL/ICML）落地业务场景经验</p>
+                  <div class="w-full bg-gray-200 rounded-full h-2.5 mb-6">
+                    <div class="bg-primary h-2.5 rounded-full" style="width: 90%"></div>
+                  </div>
+                  <div class="grid grid-cols-3 gap-4 text-center">
+                    <div>
+                      <div class="text-3xl font-bold text-primary mb-1">3+</div>
+                      <p class="text-sm text-dark/60">顶会论文转化</p>
+                    </div>
+                    <div>
+                      <div class="text-3xl font-bold text-primary mb-1">12+</div>
+                      <p class="text-sm text-dark/60">技术专利</p>
+                    </div>
+                    <div>
+                      <div class="text-3xl font-bold text-primary mb-1">32+</div>
+                      <p class="text-sm text-dark/60">行业解决方案</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              <!-- 知识传播 -->
+              <div>
+                <h4 class="text-lg font-semibold mb-4 flex items-center">
+                  <span class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary mr-3">
+                    <i class="fa fa-graduation-cap"></i>
+                  </span>
+                  知识传播
+                </h4>
+                <div class="bg-light p-6 rounded-xl shadow-sm">
+                  <p class="text-dark/80 mb-4">200+小时企业内训经验，学员满意度4.8/5.0</p>
+                  <div class="w-full bg-gray-200 rounded-full h-2.5 mb-6">
+                    <div class="bg-primary h-2.5 rounded-full" style="width: 95%"></div>
+                  </div>
+                  <div class="grid grid-cols-3 gap-4 text-center">
+                    <div>
+                      <div class="text-3xl font-bold text-primary mb-1">500+</div>
+                      <p class="text-sm text-dark/60">培养学员</p>
+                    </div>
+                    <div>
+                      <div class="text-3xl font-bold text-primary mb-1">200+</div>
+                      <p class="text-sm text-dark/60">培训小时</p>
+                    </div>
+                    <div>
+                      <div class="text-3xl font-bold text-primary mb-1">4.8/5</div>
+                      <p class="text-sm text-dark/60">满意度</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              <!-- 团队管理 -->
+              <div>
+                <h4 class="text-lg font-semibold mb-4 flex items-center">
+                  <span class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary mr-3">
+                    <i class="fa fa-users"></i>
+                  </span>
+                  团队管理
+                </h4>
+                <div class="bg-light p-6 rounded-xl shadow-sm">
+                  <p class="text-dark/80 mb-4">5-10人技术团队敏捷开发管理</p>
+                  <div class="w-full bg-gray-200 rounded-full h-2.5 mb-6">
+                    <div class="bg-primary h-2.5 rounded-full" style="width: 85%"></div>
+                  </div>
+                  <div class="grid grid-cols-3 gap-4 text-center">
+                    <div>
+                      <div class="text-3xl font-bold text-primary mb-1">8+</div>
+                      <p class="text-sm text-dark/60">项目交付</p>
+                    </div>
+                    <div>
+                      <div class="text-3xl font-bold text-primary mb-1">10</div>
+                      <p class="text-sm text-dark/60">团队规模</p>
+                    </div>
+                    <div>
+                      <div class="text-3xl font-bold text-primary mb-1">90%</div>
+                      <p class="text-sm text-dark/60">按时交付率</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <!-- 技能雷达图 -->
+            <div class="mt-10">
+              <h4 class="text-lg font-semibold mb-6">综合能力评估</h4>
+              <div class="bg-light p-6 rounded-xl shadow-sm h-80">
+                <canvas id="skillsRadarChart"></canvas>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 项目展示 -->
+    <section id="projects" class="py-20 bg-light">
+      <div class="container mx-auto px-4">
+        <div class="text-center mb-16">
+          <h2 class="text-[clamp(1.8rem,3vw,2.5rem)] font-bold mb-4 relative inline-block">
+            项目展示
+            <span class="absolute -bottom-2 left-0 w-1/2 h-1 bg-primary rounded-full"></span>
+          </h2>
+          <p class="text-dark/70 max-w-2xl mx-auto">我的代表性项目和技术成果</p>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <!-- 项目1 -->
+          <div class="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
+            <div class="relative h-60 overflow-hidden">
+              <img src="https://picsum.photos/seed/project1/600/400" alt="工业级大模型部署平台" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
+              <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end">
+                <div class="p-6">
+                  <span class="inline-block px-3 py-1 bg-primary/90 text-white text-sm font-medium rounded-full mb-2">大模型平台</span>
+                  <h3 class="text-xl font-bold text-white">工业级大模型部署平台</h3>
+                </div>
+              </div>
+            </div>
+            <div class="p-6">
+              <p class="text-dark/70 mb-4">设计并实现了支持多模型并行训练与推理的企业级平台，集成了模型压缩、量化等优化技术，降低资源消耗30%以上。</p>
+              <div class="flex flex-wrap gap-2 mb-6">
+                <span class="px-3 py-1 bg-light text-dark/70 text-xs font-medium rounded-full">PyTorch</span>
+                <span class="px-3 py-1 bg-light text-dark/70 text-xs font-medium rounded-full">Triton</span>
+                <span class="px-3 py-1 bg-light text-dark/70 text-xs font-medium rounded-full">Kubernetes</span>
+                <span class="px-3 py-1 bg-light text-dark/70 text-xs font-medium rounded-full">Docker</span>
+              </div>
+              <div class="flex justify-between items-center">
+                <span class="text-sm text-dark/60"><i class="fa fa-calendar-o mr-1"></i> 2022-2023</span>
+                <a href="#" class="text-primary hover:text-secondary transition-colors duration-300">
+                  查看详情 <i class="fa fa-arrow-right ml-1"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+          
+          <!-- 项目2 -->
+          <div class="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
+            <div class="relative h-60 overflow-hidden">
+              <img src="https://picsum.photos/seed/project2/600/400" alt="多模态商品推荐系统" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
+              <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end">
+                <div class="p-6">
+                  <span class="inline-block px-3 py-1 bg-primary/90 text-white text-sm font-medium rounded-full mb-2">推荐系统</span>
+                  <h3 class="text-xl font-bold text-white">多模态商品推荐系统</h3>
+                </div>
+              </div>
+            </div>
+            <div class="p-6">
+              <p class="text-dark/70 mb-4">基于Transformer架构，融合文本、图像和用户行为多模态特征，提升CTR 15.2%，带动长尾商品年GMV增长2.3亿元。</p>
+              <div class="flex flex-wrap gap-2 mb-6">
+                <span class="px-3 py-1 bg-light text-dark/70 text-xs font-medium rounded-full">Transformer</span>
+                <span class="px-3 py-1 bg-light text-dark/70 text-xs font-medium rounded-full">PyTorch</span>
+                <span class="px-3 py-1 bg-light text-dark/70 text-xs font-medium rounded-full">TensorFlow</span>
+                <span class="px-3 py-1 bg-light text-dark/70 text-xs font-medium rounded-full">AWS</span>
+              </div>
+              <div class="flex justify-between items-center">
+                <span class="text-sm text-dark/60"><i class="fa fa-calendar-o mr-1"></i> 2017-2018</span>
+                <a href="#" class="text-primary hover:text-secondary transition-colors duration-300">
+                  查看详情 <i class="fa fa-arrow-right ml-1"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+          
+          <!-- 项目3 -->
+          <div class="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
+            <div class="relative h-60 overflow-hidden">
+              <img src="https://picsum.photos/seed/project3/600/400" alt="知识增强型对话模型" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
+              <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end">
+                <div class="p-6">
+                  <span class="inline-block px-3 py-1 bg-primary/90 text-white text-sm font-medium rounded-full mb-2">对话系统</span>
+                  <h3 class="text-xl font-bold text-white">知识增强型对话模型</h3>
+                </div>
+              </div>
+            </div>
+            <div class="p-6">
+              <p class="text-dark/70 mb-4">开发了融合企业知识库的对话模型，通过检索增强生成能力，问题解决率提升至82%，节省30%客服人力成本。</p>
+              <div class="flex flex-wrap gap-2 mb-6">
+                <span class="px-3 py-1 bg-light text-dark/70 text-xs font-medium rounded-full">LLM</span>
+                <span class="px-3 py-1 bg-light text-dark/70 text-xs font-medium rounded-full">检索增强</span>
+                <span class="px-3 py-1 bg-light text-dark/70 text-xs font-medium rounded-full">向量数据库</span>
+                <span class="px-3 py-1 bg-light text-dark/70 text-xs font-medium rounded-full">Go</span>
+              </div>
+              <div class="flex justify-between items-center">
+                <span class="text-sm text-dark/60"><i class="fa fa-calendar-o mr-1"></i> 2019-2021</span>
+                <a href="#" class="text-primary hover:text-secondary transition-colors duration-300">
+                  查看详情 <i class="fa fa-arrow-right ml-1"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+          
+          <!-- 项目4 -->
+          <div class="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
+            <div class="relative h-60 overflow-hidden">
+              <img src="https://picsum.photos/seed/project4/600/400" alt="主动学习数据标注平台" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
+              <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end">
+                <div class="p-6">
+                  <span class="inline-block px-3 py-1 bg-primary/90 text-white text-sm font-medium rounded-full mb-2">数据平台</span>
+                  <h3 class="text-xl font-bold text-white">主动学习数据标注平台</h3>
+                </div>
+              </div>
+            </div>
+            <div class="p-6">
+              <p class="text-dark/70 mb-4">设计并实现了基于主动学习的智能数据标注系统，月均自动采集3000+高质量训练样本，降低标注成本50%以上。</p>
+              <div class="flex flex-wrap gap-2 mb-6">
+                <span class="px-3 py-1 bg-light text-dark/70 text-xs font-medium rounded-full">主动学习</span>
+                <span class="px-3 py-1 bg-light text-dark/70 text-xs font-medium rounded-full">Flask</span>
+                <span class="px-3 py-1 bg-light text-dark/70 text-xs font-medium rounded-full">MongoDB</span>
+                <span class="px-3 py-1 bg-light text-dark/70 text-xs font-medium rounded-full">React</span>
+              </div>
+              <div class="flex justify-between items-center">
+                <span class="text-sm text-dark/60"><i class="fa fa-calendar-o mr-1"></i> 2020-2021</span>
+                <a href="#" class="text-primary hover:text-secondary transition-colors duration-300">
+                  查看详情 <i class="fa fa-arrow-right ml-1"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+          
+          <!-- 项目5 -->
+          <div class="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
+            <div class="relative h-60 overflow-hidden">
+              <img src="https://picsum.photos/seed/project5/600/400" alt="AI教学沙箱平台" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
+              <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end">
+                <div class="p-6">
+                  <span class="inline-block px-3 py-1 bg-primary/90 text-white text-sm font-medium rounded-full mb-2">教育平台</span>
+                  <h3 class="text-xl font-bold text-white">AI教学沙箱平台</h3>
+                </div>
+              </div>
+            </div>
+            <div class="p-6">
+              <p class="text-dark/70 mb-4">构建了支持200+并发模型训练的教学平台，提供标准化开发环境和课程资源，提升60%教学资源利用率。</p>
+              <div class="flex flex-wrap gap-2 mb-6">
+                <span class="px-3 py-1 bg-light text-dark/70 text-xs font-medium rounded-full">Jupyter</span>
+                <span class="px-3 py-1 bg-light text-dark/70 text-xs font-medium rounded-full">Docker</span>
+                <span class="px-3 py-1 bg-light text-dark/70 text-xs font-medium rounded-full">Kubernetes</span>
+                <span class="px-3 py-1 bg-light text-dark/70 text-xs font-medium rounded-full">Python</span>
+              </div>
+              <div class="flex justify-between items-center">
+                <span class="text-sm text-dark/60"><i class="fa fa-calendar-o mr-1"></i> 2022-2023</span>
+                <a href="#" class="text-primary hover:text-secondary transition-colors duration-300">
+                  查看详情 <i class="fa fa-arrow-right ml-1"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+          
+          <!-- 项目6 -->
+          <div class="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
+            <div class="relative h-60 overflow-hidden">
+              <img src="https://picsum.photos/seed/project6/600/400" alt="行业解决方案案例库" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
+              <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end">
+                <div class="p-6">
+                  <span class="inline-block px-3 py-1 bg-primary/90 text-white text-sm font-medium rounded-full mb-2">知识库</span>
+                  <h3 class="text-xl font-bold text-white">行业解决方案案例库</h3>
+                </div>
+              </div>
+            </div>
+            <div class="p-6">
+              <p class="text-dark/70 mb-4">联合清华智谱团队构建产业级案例库，沉淀32个行业解决方案（金融/医疗/零售），覆盖80%以上常见业务场景。</p>
+              <div class="flex flex-wrap gap-2 mb-6">
+                <span class="px-3 py-1 bg-light text-dark/70 text-xs font-medium rounded-full">知识图谱</span>
+                <span class="px-3 py-1 bg-light text-dark/70 text-xs font-medium rounded-full">Elasticsearch</span>
+                <span class="px-3 py-1 bg-light text-dark/70 text-xs font-medium rounded-full">Django</span>
+                <span class="px-3 py-1 bg-light text-dark/70 text-xs font-medium rounded-full">Vue.js</span>
+              </div>
+              <div class="flex justify-between items-center">
+                <span class="text-sm text-dark/60"><i class="fa fa-calendar-o mr-1"></i> 2023-至今</span>
+                <a href="#" class="text-primary hover:text-secondary transition-colors duration-300">
+                  查看详情 <i class="fa fa-arrow-right ml-1"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="text-center mt-12">
+          <button class="px-8 py-3 bg-primary text-white rounded-lg shadow-lg hover:bg-primary/90 transition-all duration-300 transform hover:-translate-y-1">
+            查看更多项目 <i class="fa fa-chevron-right ml-1"></i>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- 教育背景 -->
+    <section id="education" class="py-20 bg-white">
+      <div class="container mx-auto px-4">
+        <div class="text-center mb-16">
+          <h2 class="text-[clamp(1.8rem,3vw,2.5rem)] font-bold mb-4 relative inline-block">
+            教育背景
+            <span class="absolute -bottom-2 left-0 w-1/2 h-1 bg-primary rounded-full"></span>
+          </h2>
+          <p class="text-dark/70 max-w-2xl mx-auto">我的学习经历和学术成就</p>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+          <!-- 主要教育经历 -->
+          <div>
+            <div class="bg-light p-8 rounded-2xl shadow-md hover:shadow-lg transition-shadow duration-300">
+              <div class="flex items-start">
+                <div class="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center text-primary mr-6">
+                  <i class="fa fa-graduation-cap text-2xl"></i>
+                </div>
+                <div>
+                  <span class="inline-block px-3 py-1 bg-primary/10 text-primary text-sm font-medium rounded-full mb-2">2011-2015</span>
+                  <h3 class="text-xl font-bold mb-1">河南理工大学</h3>
+                  <p class="text-lg font-medium mb-3">数学与应用数学 学士</p>
+                  <div class="mb-4">
+                    <h4 class="font-semibold mb-2">核心课程</h4>
+                    <div class="grid grid-cols-2 gap-2">
+                      <div class="flex items-center">
+                        <span class="w-2 h-2 rounded-full bg-primary mr-2"></span>
+                        <span>数值分析 (94分)</span>
+                      </div>
+                      <div class="flex items-center">
+                        <span class="w-2 h-2 rounded-full bg-primary mr-2"></span>
+                        <span>概率统计 (91分)</span>
+                      </div>
+                      <div class="flex items-center">
+                        <span class="w-2 h-2 rounded-full bg-primary mr-2"></span>
+                        <span>优化理论</span>
+                      </div>
+                      <div class="flex items-center">
+                        <span class="w-2 h-2 rounded-full bg-primary mr-2"></span>
+                        <span>数学建模</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div>
+                    <h4 class="font-semibold mb-2">学术成就</h4>
+                    <p class="text-dark/70">数学建模竞赛省级二等奖，连续三年获得校级一等奖学金</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- 证书与荣誉 -->
+          <div>
+            <h3 class="text-xl font-bold mb-6 pb-2 border-b border-gray-200">证书与荣誉</h3>
+            
+            <div class="space-y-6">
+              <!-- 证书1 -->
+              <div class="bg-light p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow duration-300 flex items-center">
+                <div class="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center text-primary mr-4">
+                  <i class="fa fa-certificate text-xl"></i>
+                </div>
+                <div>
+                  <h4 class="font-semibold text-lg mb-1">TensorFlow Developer Certificate</h4>
+                  <p class="text-dark/70">Google TensorFlow 官方认证</p>
+                  <p class="text-sm text-dark/60 mt-1">2021年获得</p>
+                </div>
+              </div>
+              
+              <!-- 证书2 -->
+              <div class="bg-light p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow duration-300 flex items-center">
+                <div class="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center text-primary mr-4">
+                  <i class="fa fa-certificate text-xl"></i>
+                </div>
+                <div>
+                  <h4 class="font-semibold text-lg mb-1">AWS Certified Solutions Architect</h4>
+                  <p class="text-dark/70">亚马逊云服务解决方案架构师认证</p>
+                  <p class="text-sm text-dark/60 mt-1">2020年获得</p>
+                </div>
+              </div>
+              
+              <!-- 证书3 -->
+              <div class="bg-light p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow duration-300 flex items-center">
+                <div class="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center text-primary mr-4">
+                  <i class="fa fa-trophy text-xl"></i>
+                </div>
+                <div>
+                  <h4 class="font-semibold text-lg mb-1">教育部产学合作协同育人项目优秀导师</h4>
+                  <p class="text-dark/70">教育部产学合作协同育人项目</p>
+                  <p class="text-sm text-dark/60 mt-1">2022年获得</p>
+                </div>
+              </div>
+              
+              <!-- 证书4 -->
+              <div class="bg-light p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow duration-300 flex items-center">
+                <div class="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center text-primary mr-4">
+                  <i class="fa fa-trophy text-xl"></i>
+                </div>
+                <div>
+                  <h4 class="font-semibold text-lg mb-1">数学建模竞赛省级二等奖</h4>
+                  <p class="text-dark/70">全国大学生数学建模竞赛</p>
+                  <p class="text-sm text-dark/60 mt-1">2013年获得</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- 学术成果 -->
+        <div class="mt-16">
+          <h3 class="text-xl font-bold mb-6 pb-2 border-b border-gray-200">学术成果</h3>
+          
+          <div class="space-y-6">
+            <!-- 论文1 -->
+            <div class="bg-light p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow duration-300">
+              <div class="flex items-center mb-3">
+                <div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary mr-3">
+                  <i class="fa fa-file-text-o"></i>
+                </div>
+                <h4 class="font-semibold text-lg">Efficient Transformer-based Recommender System with Dynamic Negative Sampling</h4>
+              </div>
+              <p class="text-dark/70 mb-3">ACL 2018 (CCF-B)</p>
+              <p class="text-dark/80">提出了基于动态负采样的Transformer推荐模型，在电商场景中取得了显著性能提升。</p>
+            </div>
+            
+            <!-- 论文2 -->
+            <div class="bg-light p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow duration-300">
+              <div class="flex items-center mb-3">
+                <div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary mr-3">
+                  <i class="fa fa-file-text-o"></i>
+                </div>
+                <h4 class="font-semibold text-lg">Knowledge-enhanced Generative Dialogue System for Customer Service</h4>
+              </div>
+              <p class="text-dark/70 mb-3">ICML 2020 (CCF-A)</p>
+              <p class="text-dark/80">提出了知识增强型生成式对话模型，有效提升了客服场景下的问题解决率。</p>
+            </div>
+            
+            <!-- 论文3 -->
+            <div class="bg-light p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow duration-300">
+              <div class="flex items-center mb-3">
+                <div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary mr-3">
+                  <i class="fa fa-file-text-o"></i>
+                </div>
+                <h4 class="font-semibold text-lg">Efficient Large Model Deployment with Model Compression and Parallel Inference</h4>
+              </div>
+              <p class="text-dark/70 mb-3">NeurIPS 2022 (CCF-A)</p>
+              <p class="text-dark/80">提出了基于模型压缩和并行推理的高效大模型部署方法，大幅降低了部署成本。</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 联系方式 -->
+    <section id="contact" class="py-20 bg-light">
+      <div class="container mx-auto px-4">
+        <div class="text-center mb-16">
+          <h2 class="text-[clamp(1.8rem,3vw,2.5rem)] font-bold mb-4 relative inline-block">
+            联系方式
+            <span class="absolute -bottom-2 left-0 w-1/2 h-1 bg-primary rounded-full"></span>
+          </h2>
+          <p class="text-dark/70 max-w-2xl mx-auto">欢迎通过以下方式联系我，期待与您合作</p>
+        </div>
+        
+        <div class="grid grid-cols-1 lg:grid-cols-5 gap-10">
+          <!-- 联系信息 -->
+          <div class="lg:col-span-2">
+            <div class="bg-white p-8 rounded-2xl shadow-md h-full">
+              <h3 class="text-xl font-bold mb-6 pb-2 border-b border-gray-200">联系信息</h3>
+              
+              <div class="space-y-6">
+                <div class="flex items-start">
+                  <div class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary mr-4">
+                    <i class="fa fa-envelope"></i>
+                  </div>
+                  <div>
+                    <h4 class="font-semibold mb-1">邮箱</h4>
+                    <p class="text-dark/70">wangxiaoyu517@126.com</p>
+                  </div>
+                </div>
+                
+                <div class="flex items-start">
+                  <div class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary mr-4">
+                    <i class="fa fa-phone"></i>
+                  </div>
+                  <div>
+                    <h4 class="font-semibold mb-1">电话</h4>
+                    <p class="text-dark/70">(+86)123-4567-8910</p>
+                  </div>
+                </div>
+                
+                <div class="flex items-start">
+                  <div class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary mr-4">
+                    <i class="fa fa-github"></i>
+                  </div>
+                  <div>
+                    <h4 class="font-semibold mb-1">GitHub</h4>
+                    <p class="text-dark/70"><a href="https://github.com/wangxiaoyu-ai" class="text-primary hover:underline">github.com/wangxiaoyu-ai</a></p>
+                  </div>
+                </div>
+                
+                <div class="flex items-start">
+                  <div class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary mr-4">
+                    <i class="fa fa-globe"></i>
+                  </div>
+                  <div>
+                    <h4 class="font-semibold mb-1">博客</h4>
+                    <p class="text-dark/70"><a href="https://wangxiaoyu-ai.github.io" class="text-primary hover:underline">wangxiaoyu-ai.github.io</a></p>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="mt-10">
+                <h3 class="text-xl font-bold mb-4">社交媒体</h3>
+                <div class="flex space-x-4">
+                  <a href="#" class="w-12 h-12 rounded-full bg-primary text-white flex items-center justify-center hover:bg-secondary transition-colors duration-300">
+                    <i class="fa fa-weixin"></i>
+                  </a>
+                  <a href="#" class="w-12 h-12 rounded-full bg-primary text-white flex items-center justify-center hover:bg-secondary transition-colors duration-300">
+                    <i class="fa fa-linkedin"></i>
+                  </a>
+                  <a href="#" class="w-12 h-12 rounded-full bg-primary text-white flex items-center justify-center hover:bg-secondary transition-colors duration-300">
+                    <i class="fa fa-twitter"></i>
+                  </a>
+                  <a href="#" class="w-12 h-12 rounded-full bg-primary text-white flex items-center justify-center hover:bg-secondary transition-colors duration-300">
+                    <i class="fa fa-zhihu"></i>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- 联系表单 -->
+          <div class="lg:col-span-3">
+            <div class="bg-white p-8 rounded-2xl shadow-md h-full">
+              <h3 class="text-xl font-bold mb-6 pb-2 border-b border-gray-200">发送消息</h3>
+              
+              <form id="contact-form" class="space-y-6">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div>
+                    <label for="name" class="block text-sm font-medium text-dark/70 mb-1">姓名</label>
+                    <input type="text" id="name" name="name" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-colors duration-300" placeholder="请输入您的姓名">
+                  </div>
+                  <div>
+                    <label for="email" class="block text-sm font-medium text-dark/70 mb-1">邮箱</label>
+                    <input type="email" id="email" name="email" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-colors duration-300" placeholder="请输入您的邮箱">
+                  </div>
+                </div>
+                
+                <div>
+                  <label for="subject" class="block text-sm font-medium text-dark/70 mb-1">主题</label>
+                  <input type="text" id="subject" name="subject" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-colors duration-300" placeholder="请输入消息主题">
+                </div>
+                
+                <div>
+                  <label for="message" class="block text-sm font-medium text-dark/70 mb-1">消息</label>
+                  <textarea id="message" name="message" rows="5" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-colors duration-300 resize-none" placeholder="请输入您的消息内容"></textarea>
+                </div>
+                
+                <div class="flex items-center">
+                  <input type="checkbox" id="privacy" name="privacy" class="mr-2">
+                  <label for="privacy" class="text-sm text-dark/70">我同意根据隐私政策处理我的个人数据</label>
+                </div>
+                
+                <button type="submit" class="px-8 py-3 bg-primary text-white rounded-lg shadow-lg hover:bg-primary/90 transition-all duration-300 transform hover:-translate-y-1 w-full md:w-auto">
+                  发送消息 <i class="fa fa-paper-plane ml-1"></i>
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- 页脚 -->
+  <footer class="bg-dark text-white py-12">
+    <div class="container mx-auto px-4">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-10">
+        <div>
+          <h3 class="text-xl font-bold mb-4 flex items-center">
+            <span class="mr-2"><i class="fa fa-code"></i></span>
+            <span>王小鱼</span>
+          </h3>
+          <p class="text-white/70 mb-6">大模型应用开发专家 | 高级算法讲师</p>
+          <div class="flex space-x-4">
+            <a href="#" class="text-white/70 hover:text-white transition-colors duration-300">
+              <i class="fa fa-weixin"></i>
+            </a>
+            <a href="#" class="text-white/70 hover:text-white transition-colors duration-300">
+              <i class="fa fa-linkedin"></i>
+            </a>
+            <a href="#" class="text-white/70 hover:text-white transition-colors duration-300">
+              <i class="fa fa-twitter"></i>
+            </a>
+            <a href="#" class="text-white/70 hover:text-white transition-colors duration-300">
+              <i class="fa fa-zhihu"></i>
+            </a>
+          </div>
+        </div>
+        
+        <div>
+          <h4 class="text-lg font-semibold mb-4">快速链接</h4>
+          <ul class="space-y-2">
+            <li><a href="#about" class="text-white/70 hover:text-white transition-colors duration-300">关于我</a></li>
+            <li><a href="#experience" class="text-white/70 hover:text-white transition-colors duration-300">专业经历</a></li>
+            <li><a href="#skills" class="text-white/70 hover:text-white transition-colors duration-300">技能</a></li>
+            <li><a href="#projects" class="text-white/70 hover:text-white transition-colors duration-300">项目展示</a></li>
+            <li><a href="#education" class="text-white/70 hover:text-white transition-colors duration-300">教育背景</a></li>
+            <li><a href="#contact" class="text-white/70 hover:text-white transition-colors duration-300">联系方式</a></li>
+          </ul>
+        </div>
+        
+        <div>
+          <h4 class="text-lg font-semibold mb-4">联系信息</h4>
+          <ul class="space-y-3">
+            <li class="flex items-start">
+              <i class="fa fa-envelope-o mr-3 mt-1"></i>
+              <span class="text-white/70">wangxiaoyu517@126.com</span>
+            </li>
+            <li class="flex items-start">
+              <i class="fa fa-phone mr-3 mt-1"></i>
+              <span class="text-white/70">(+86)123-4567-8910</span>
+            </li>
+            <li class="flex items-start">
+              <i class="fa fa-github mr-3 mt-1"></i>
+              <span class="text-white/70"><a href="https://github.com/wangxiaoyu-ai" class="hover:text-white transition-colors duration-300">github.com/wangxiaoyu-ai</a></span>
+            </li>
+            <li class="flex items-start">
+              <i class="fa fa-globe mr-3 mt-1"></i>
+              <span class="text-white/70"><a href="https://wangxiaoyu-ai.github.io" class="hover:text-white transition-colors duration-300">wangxiaoyu-ai.github.io</a></span>
+            </li>
+          </ul>
+        </div>
+        
+        <div>
+          <h4 class="text-lg font-semibold mb-4">订阅更新</h4>
+          <p class="text-white/70 mb-4">订阅我的邮件，获取最新的项目和技术动态</p>
+          <form class="space-y-3">
+            <input type="email" placeholder="您的邮箱地址" class="w-full px-4 py-2 rounded-lg bg-white/10 border border-white/20 focus:outline-none focus:ring-2 focus:ring-primary/50 text-white">
+            <button type="submit" class="px-4 py-2 bg-primary text-white rounded-lg hover:bg-primary/90 transition-colors duration-300 w-full">
+              订阅
+            </button>
+          </form>
+        </div>
+      </div>
+      
+      <div class="border-t border-white/10 mt-12 pt-8 text-center">
+        <p class="text-white/70">© 2025 王小鱼. 保留所有权利.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- 返回顶部按钮 -->
+  <button id="back-to-top" class="fixed bottom-6 right-6 w-12 h-12 rounded-full bg-primary text-white shadow-lg flex items-center justify-center opacity-0 invisible transition-all duration-300 hover:bg-secondary">
+    <i class="fa fa-arrow-up"></i>
+  </button>
+
+  <!-- JavaScript -->
+  <script>
+    // 导航栏滚动效果
+    const navbar = document.getElementById('navbar');
+    const backToTop = document.getElementById('back-to-top');
+    
+    window.addEventListener('scroll', function() {
+      if (window.scrollY > 50) {
+        navbar.classList.add('bg-white', 'shadow-md');
+        navbar.classList.remove('bg-glass', 'bg-white/80');
+      } else {
+        navbar.classList.remove('bg-white', 'shadow-md');
+        navbar.classList.add('bg-glass', 'bg-white/80');
+      }
+      
+      // 返回顶部按钮显示/隐藏
+      if (window.scrollY > 300) {
+        backToTop.classList.remove('opacity-0', 'invisible');
+        backToTop.classList.add('opacity-100', 'visible');
+      } else {
+        backToTop.classList.add('opacity-0', 'invisible');
+        backToTop.classList.remove('opacity-100', 'visible');
+      }
+      
+      // 滚动动画
+      const fadeElements = document.querySelectorAll('.fade-in');
+      fadeElements.forEach(element => {
+        const elementTop = element.getBoundingClientRect().top;
+        const windowHeight = window.innerHeight;
+        
+        if (elementTop < windowHeight * 0.9) {
+          element.style.opacity = '1';
+          element.style.transform = 'translateY(0)';
+        }
+      });
+      
+      // 技能条动画
+      const skillBars = document.querySelectorAll('.skill-bar');
+      skillBars.forEach(bar => {
+        const barTop = bar.getBoundingClientRect().top;
+        const windowHeight = window.innerHeight;
+        
+        if (barTop < windowHeight * 0.9) {
+          bar.style.width = bar.getAttribute('data-width');
+        }
+      });
+    });
+    
+    // 移动端菜单切换
+    const menuToggle = document.getElementById('menu-toggle');
+    const mobileMenu = document.getElementById('mobile-menu');
+    
+    menuToggle.addEventListener('click', function() {
+      mobileMenu.classList.toggle('hidden');
+      if (mobileMenu.classList.contains('hidden')) {
+        menuToggle.innerHTML = '<i class="fa fa-bars text-xl"></i>';
+      } else {
+        menuToggle.innerHTML = '<i class="fa fa-times text-xl"></i>';
+      }
+    });
+    
+    // 平滑滚动
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        
+        const targetId = this.getAttribute('href');
+        const targetElement = document.querySelector(targetId);
+        
+        if (targetElement) {
+          window.scrollTo({
+            top: targetElement.offsetTop - 80,
+            behavior: 'smooth'
+          });
+          
+          // 关闭移动端菜单
+          if (!mobileMenu.classList.contains('hidden')) {
+            mobileMenu.classList.add('hidden');
+            menuToggle.innerHTML = '<i class="fa fa-bars text-xl"></i>';
+          }
+        }
+      });
+    });
+    
+    // 返回顶部按钮
+    backToTop.addEventListener('click', function() {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
+    
+    // 联系表单提交
+    const contactForm = document.getElementById('contact-form');
+    if (contactForm) {
+      contactForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        // 这里可以添加表单验证和提交逻辑
+        alert('感谢您的留言！我会尽快回复您。');
+        contactForm.reset();
+      });
+    }
+    
+    // 技能雷达图
+    window.addEventListener('load', function() {
+      const ctx = document.getElementById('skillsRadarChart');
+      if (ctx) {
+        new Chart(ctx, {
+          type: 'radar',
+          data: {
+            labels: ['大模型开发', '算法优化', '系统设计', '教学培训', '团队管理', '技术转化'],
+            datasets: [{
+              label: '能力值',
+              data: [95, 90, 88, 92, 85, 90],
+              backgroundColor: 'rgba(22, 93, 255, 0.2)',
+              borderColor: 'rgba(22, 93, 255, 1)',
+              pointBackgroundColor: 'rgba(22, 93, 255, 1)',
+              pointBorderColor: '#fff',
+              pointHoverBackgroundColor: '#fff',
+              pointHoverBorderColor: 'rgba(22, 93, 255, 1)'
+            }]
+          },
+          options: {
+            scales: {
+              r: {
+                angleLines: {
+                  display: true
+                },
+                suggestedMin: 50,
+                suggestedMax: 100
+              }
+            }
+          }
+        });
+      }
+    });
+    
+    // 初始化淡入动画
+    document.addEventListener('DOMContentLoaded', function() {
+      const fadeElements = document.querySelectorAll('.fade-in');
+      fadeElements.forEach(element => {
+        element.style.opacity = '0';
+        element.style.transform = 'translateY(20px)';
+        element.style.transition = 'opacity 0.8s ease-in-out, transform 0.8s ease-in-out';
+      });
+    });
+  </script>
+</body>
+</html>
+    
